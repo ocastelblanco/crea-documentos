@@ -1,0 +1,63 @@
+@use "@material/theme/theme-color" as tema;
+.seleccionar {
+  .seleccion {
+    .descripcion {
+      h3 {
+        margin-top: 2em;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        tr {
+          border: 1px solid tema.$secondary;
+          th {
+            text-align: left;
+            width: 7em;
+          }
+          td {
+            padding: 0.5rem;
+          }
+        }
+      }
+    }
+    .accion {
+      margin-top: 1em;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+.drop {
+  .area-drop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #a1d2ef;
+    border: 2px solid #008ed2;
+    padding: 4em;
+    border-radius: 1em;
+    cursor: pointer;
+    &.dragover {
+      background-color: tema.$secondary;
+      border: dotted;
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+      color: #fff;
+    }
+    #upload {
+      display: none;
+    }
+    p {
+      text-align: center;
+    }
+  }
+  .nueva-plantilla {
+    .accion {
+      display: flex;
+      justify-content: flex-end;
+      .boton-subir {
+        margin: 1em 0;
+      }
+    }
+  }
+}

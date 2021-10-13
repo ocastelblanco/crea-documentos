@@ -1,0 +1,43 @@
+@use "@material/theme/theme-color" as tema;
+.contenido {
+  max-height: calc(100vh - 64px);
+  overflow-y: scroll;
+  h2 {
+    text-align: center;
+  }
+  .encabezado {
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      tr {
+        border: 1px solid tema.$secondary;
+        th {
+          text-align: left;
+          width: 7em;
+        }
+        td {
+          padding: 0.5rem;
+        }
+      }
+    }
+  }
+  .prevista {
+    margin-bottom: 5em;
+    p {
+      margin: 1em 0;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      text-align: center;
+      margin: 2em 0 1em;
+    }
+    .variable {
+      color: tema.$primary;
+      font-weight: 700;
+    }
+  }
+}

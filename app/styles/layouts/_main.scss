@@ -1,0 +1,25 @@
+@use "../global" as global;
+// Estilos generales para todos los componentes
+.spacer {
+  flex: 1 1 auto;
+}
+.contenedor {
+  padding: 0 24px;
+  .preview {
+    max-height: calc(100vh - 112px);
+    overflow: hidden;
+  }
+}
+.label {
+  margin-top: 1em;
+  font-size: 0.85em;
+  font-weight: 500;
+  &::before {
+    content: "*";
+    color: red;
+    margin-right: 0.25em;
+  }
+}
+.mdc-alert {
+  margin-top: 2em;
+}

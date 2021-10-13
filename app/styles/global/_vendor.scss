@@ -1,0 +1,9 @@
+@use "@material/theme" as theme-variables with ($primary: #008ed2, $secondary: #0d274b);
+@use "@material/tab" as tab-variables with
+  (
+    $text-label-color-default: #fff,
+    $icon-color-default: #fff,
+    $text-label-color-active: #a1e2ef,
+    $icon-color-active: #a1e2ef
+  );
+@use "balm-ui/dist/balm-ui";
