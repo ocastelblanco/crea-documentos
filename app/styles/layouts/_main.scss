@@ -5,9 +5,9 @@
 }
 .contenedor {
   padding: 0 24px;
-  .preview {
+  .celda {
     max-height: calc(100vh - 112px);
-    overflow: hidden;
+    overflow-y: scroll;
   }
 }
 .label {

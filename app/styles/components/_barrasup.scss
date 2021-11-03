@@ -1,25 +1,25 @@
 @use "@material/theme/theme-color" as tema;
-$unidad: 16px;
+$unidad: 8px;
 .barrasup {
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: $unidad * 4;
+  height: $unidad * 8;
   background-color: #0d274b;
   color: #fff;
   .logo {
-    height: $unidad * 2;
-    margin: $unidad;
+    height: $unidad * 3;
+    margin: $unidad * 2.5 $unidad * 1.5;
   }
   .titulo,
   .boton-carga {
-    margin-left: $unidad;
+    margin-left: $unidad * 2;
   }
   .barraTab {
-    margin-left: $unidad;
-    max-width: 520px;
+    margin-left: $unidad * 2;
+    max-width: $unidad * 100;
   }
   .boton-descarga {
-    margin-right: $unidad;
+    margin-right: $unidad * 2;
   }
 }

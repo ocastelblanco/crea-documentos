@@ -1,9 +1,12 @@
 <template>
   <div class="barrasup">
     <img class="logo" :src="logo" />
-    <h2 class="titulo">Generador de documentos</h2>
+    <h3 class="titulo">Generador de documentos</h3>
     <ui-tab-bar class="barraTab" v-model="tabActiva">
       <ui-tab icon="edit" type="textWithIcon">Crear documento</ui-tab>
+      <ui-tab icon="description" type="textWithIcon">
+        Gestionar contenidos
+      </ui-tab>
       <ui-tab icon="settings" type="textWithIcon">
         Gestionar plantillas
       </ui-tab>
@@ -17,7 +20,7 @@
       :class="toolbarItemClass"
       icon="file_download"
     >
-      Descargar el fichero
+      Descargar
     </ui-button>
   </div>
 </template>

@@ -40,6 +40,17 @@
         </div>
       </ui-panel>
       <ui-panel>
+        <repositorio
+          :listaDocumentos="listaDocumentos"
+          :documentoActivo="documentoActivo"
+          :plantillaActiva="plantillaActiva"
+          @guardaDocumento="guardaDocumento"
+          @cargaDocumento="cargaDocumento"
+          @borraDocumento="borraDocumento"
+        >
+        </repositorio>
+      </ui-panel>
+      <ui-panel>
         <gestiona
           :listaPlantillas="listaPlantillas"
           :numPlantilla="numPlantilla"
@@ -58,6 +69,7 @@ import formulario from '@/views/components/formulario';
 import barrasup from '@/views/components/barrasup';
 import contenido from '@/views/components/contenido';
 import gestiona from '@/views/components/gestiona';
+import repositorio from '@/views/components/repositorio';
 import axios from 'axios';
 import mammoth from 'mammoth/mammoth.browser';
 
@@ -67,7 +79,8 @@ export default {
     formulario,
     barrasup,
     contenido,
-    gestiona
+    gestiona,
+    repositorio
   },
   data() {
     return {
@@ -80,14 +93,69 @@ export default {
       listaPlantillas: [],
       numPlantilla: 0,
       tabActiva: 0,
-      //rutaAPI: 'http://localhost/aulaplaneta/api/plantilla-word/',
+      listaDocumentos: [],
+      documentoActivo: 0,
+      //rutaAPI: 'http://localhost/aulaplaneta/api/plantilla-word/'
       rutaAPI: 'api/'
     };
   },
   mounted() {
     this.cargaListaPlantillas();
+    this.cargaListaDocumentos();
   },
   methods: {
+    guardaDocumento(nombre) {
+      const salida = {
+        plantilla: this.plantillaActiva.nombre,
+        nombre: nombre,
+        valores: this.form
+      };
+      const param = new FormData();
+      param.append('documento', JSON.stringify(salida));
+      axios
+        .post(this.rutaAPI + 'data.php?accion=guarda', param)
+        .then((resp) => {
+          if (resp.data.error === null) {
+            this.$alert('Contenido guardado con éxito');
+            this.cargaListaDocumentos();
+          } else {
+            this.$alert('Error al guardar el contenido');
+          }
+        });
+    },
+    cargaDocumento(num) {
+      const param = new FormData();
+      param.append('id', num);
+      axios.post(this.rutaAPI + 'data.php?accion=carga', param).then((resp) => {
+        if (resp.data.error === null) {
+          this.form = resp.data.valores;
+        } else {
+          this.$alert('Error al cargar el contenido');
+        }
+      });
+    },
+    borraDocumento(num) {
+      const param = new FormData();
+      param.append('id', num);
+      axios.post(this.rutaAPI + 'data.php?accion=borra', param).then((resp) => {
+        if (resp.data.error === null) {
+          this.$alert('Contenido eliminado con éxito');
+          this.cargaListaDocumentos();
+        } else {
+          this.$alert('Error al eliminar el contenido');
+        }
+      });
+    },
+    cargaListaDocumentos() {
+      axios.get(this.rutaAPI + 'data.php?accion=lista').then((resp) => {
+        if (resp.data.error === null) {
+          this.listaDocumentos = resp.data.valores;
+        } else {
+          this.$alert('Error al cargar la lista de documentos');
+        }
+      });
+      this.documentoActivo = 0;
+    },
     eliminarPlantilla(num) {
       const param = new FormData();
       param.append('num', num);

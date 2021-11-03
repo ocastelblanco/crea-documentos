@@ -1,7 +1,5 @@
 @use "@material/theme/theme-color" as tema;
 .contenido {
-  max-height: calc(100vh - 64px);
-  overflow-y: scroll;
   h2 {
     text-align: center;
   }

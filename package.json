@@ -1,6 +1,6 @@
 {
   "name": "llena-word",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A partir de un formulario web, se llenan espacios en un Office Word",
   "author": "Oliver Castelblanco Martínez <ocastelblanco@gmail.com>",
   "homepage": "http://herramientas.centroeditor.es:81/autocon/",

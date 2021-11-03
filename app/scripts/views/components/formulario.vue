@@ -1,6 +1,6 @@
 <template>
   <div class="formulario">
-    <h2>Campos de la plantilla</h2>
+    <h2>{{ nombreDocumento }}</h2>
     <ui-form type="|" item-margin-bottom="16" action-align="center">
       <template #default="{ actionClass }">
         <template v-for="campo in form" :key="campo">
@@ -52,7 +52,8 @@ export default {
         dateFormat: 'd \\de F \\de Y',
         defaultDate: 'today',
         locale: lang.es
-      }
+      },
+      nombreDocumento: 'Documento en construcción'
     };
   },
   emits: ['crear', 'limpiar'],
